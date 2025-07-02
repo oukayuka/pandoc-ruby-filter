@@ -19,8 +19,12 @@ function process_str(format, text)
         -- Convert the ruby notation according to the output format
         if format:match "latex" then
             table.insert(result, pandoc.RawInline("latex", "\\ruby{" .. kanji .. "}{" .. yomi .. "}"))
-        elseif format:match "html" then
+        elseif format:match "typst" then
+            table.insert(result, pandoc.RawInline("typst", "#ruby[" .. yomi .. "][" .. kanji .. "]"))
+        elseif format:match "html" or format:match "epub" then
             table.insert(result, pandoc.RawInline("html", "<ruby>" .. kanji .. "<rp>《</rp><rt>" .. yomi .. "</rt><rp>》</rp></ruby>"))
+        elseif format:match "docx" then
+            table.insert(result, pandoc.RawInline("openxml", "<w:r><w:ruby><w:rt><w:r><w:t>" .. yomi .. "</w:t></w:r></w:rt><w:rubyBase><w:r><w:t>" .. kanji .. "</w:t></w:r></w:rubyBase></w:ruby></w:r>"))
         else
             table.insert(result, pandoc.Str("｜" .. kanji .. "《" .. yomi .. "》"))
         end
