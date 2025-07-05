@@ -18,7 +18,7 @@
 - LaTeX の場合： `\ruby{単語}{よみがな}`
 - HTML の場合： `<ruby>単語<rp>《</rp><rt>よみがな</rt><rp>》</rp></ruby>`
 - **EPUB の場合**： `<ruby>単語<rp>《</rp><rt>よみがな</rt><rp>》</rp></ruby>`
-- **Typst の場合**： `#ruby[よみがな][単語]`
+- **Typst の場合**： `#ruby[よみがな][単語];`
   - Typst は単体ではルビに対応していません。この形式は [rubby](https://typst.app/universe/package/rubby) パッケージのサンプルコードにある関数 `ruby` に合わせたものです
 - **DOCX の場合**： `<w:r><w:ruby><w:rt><w:r><w:t>よみがな</w:t></w:r></w:rt><w:rubyBase><w:r><w:t>単語</w:t></w:r></w:rubyBase></w:ruby></w:r>`
 - 上記以外の場合： 入力形式と同じまま維持されます。

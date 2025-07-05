@@ -20,7 +20,7 @@ function process_str(format, text)
         if format:match "latex" then
             table.insert(result, pandoc.RawInline("latex", "\\ruby{" .. kanji .. "}{" .. yomi .. "}"))
         elseif format:match "typst" then
-            table.insert(result, pandoc.RawInline("typst", "#ruby[" .. yomi .. "][" .. kanji .. "]"))
+            table.insert(result, pandoc.RawInline("typst", "#ruby[" .. yomi .. "][" .. kanji .. "];"))
         elseif format:match "html" or format:match "epub" then
             table.insert(result, pandoc.RawInline("html", "<ruby>" .. kanji .. "<rp>《</rp><rt>" .. yomi .. "</rt><rp>》</rp></ruby>"))
         elseif format:match "docx" then
